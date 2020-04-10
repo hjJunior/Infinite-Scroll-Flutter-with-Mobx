@@ -13,7 +13,6 @@ abstract class _MyStore with Store {
   @observable
   ObservableFuture<List<int>> list;
 
-
   @action
   Future<void> fetchSomething() async {
     print('fetching...');

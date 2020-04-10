@@ -56,24 +56,25 @@ class _HomePageState extends State<HomePage> {
           final isLoading = store.isFetching;
 
           return ListView.builder(
-              controller: _scrollController,
-              itemCount: lenghtItems + (isLoading ? 1 : 0),
-              itemBuilder: (_, index) {
-                final isIndexForLoadingWidget = lenghtItems == index;
+            controller: _scrollController,
+            itemCount: lenghtItems + (isLoading ? 1 : 0),
+            itemBuilder: (_, index) {
+              final isIndexForLoadingWidget = lenghtItems == index;
 
-                if (isIndexForLoadingWidget) {
-                  return Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-                }
-
-                return ListTile(
-                  title: Text('Item on $index'),
+              if (isIndexForLoadingWidget) {
+                return Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: CircularProgressIndicator(),
+                  ),
                 );
-              });
+              }
+
+              return ListTile(
+                title: Text('Item on $index'),
+              );
+            },
+          );
         },
       ),
     );
